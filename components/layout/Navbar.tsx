@@ -1,6 +1,7 @@
-import Logo from "../../assets/etc/logo.svg";
+import LogoBrand from "../../assets/etc/logo.svg";
 import Link from "next/link";
 import styled from "styled-components";
+import { NavText } from "../styles/SharedStyles";
 
 const NavContainer = styled.nav`
 	position: absolute;
@@ -36,15 +37,14 @@ const NavList = styled.ul`
 	backdrop-filter: blur(81.55px);
 `;
 
-const NavItemContainer = styled.a`
+const Logo = styled(LogoBrand)`
+	cursor: pointer;
+`;
+
+const NavItem = styled.a`
 	position: relative;
 	display: flex;
 	column-gap: 11px;
-	color: rgb(var(--white));
-	font-family: "Barlow Condensed";
-	letter-spacing: 2.7px;
-	font-size: 16px;
-	line-height: auto;
 	text-decoration: none;
 	height: 100%;
 	align-items: center;
@@ -60,45 +60,38 @@ const NavItemContainer = styled.a`
 	}
 `;
 
-const NavItemNumber = styled.div`
+const NavNumber = styled(NavText)`
 	font-weight: bold;
 `;
 
-const NavItemName = styled.div`
-	text-transform: uppercase;
-`;
-
-const Navbar = () => {
+const Navbar = (): JSX.Element => {
 	return (
 		<NavContainer>
 			<Logo />
 			<NavList>
 				<Link passHref href={"/"}>
-					<NavItemContainer>
-						<NavItemNumber>00</NavItemNumber>
-						<NavItemName>Home</NavItemName>
-					</NavItemContainer>
+					<NavItem>
+						<NavNumber>00</NavNumber>
+						<NavText>Home</NavText>
+					</NavItem>
 				</Link>
-
 				<Link passHref href={"/destination"}>
-					<NavItemContainer>
-						<NavItemNumber>01</NavItemNumber>
-						<NavItemName>Destination</NavItemName>
-					</NavItemContainer>
+					<NavItem>
+						<NavNumber>01</NavNumber>
+						<NavText>Destination</NavText>
+					</NavItem>
 				</Link>
-
 				<Link passHref href={"/crew"}>
-					<NavItemContainer>
-						<NavItemNumber>02</NavItemNumber>
-						<NavItemName>Crew</NavItemName>
-					</NavItemContainer>
+					<NavItem>
+						<NavNumber>02</NavNumber>
+						<NavText>Crew</NavText>
+					</NavItem>
 				</Link>
-
 				<Link passHref href={"/technology"}>
-					<NavItemContainer>
-						<NavItemNumber>03</NavItemNumber>
-						<NavItemName>Technology</NavItemName>
-					</NavItemContainer>
+					<NavItem>
+						<NavNumber>03</NavNumber>
+						<NavText>Technology</NavText>
+					</NavItem>
 				</Link>
 			</NavList>
 		</NavContainer>

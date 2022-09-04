@@ -27,3 +27,9 @@ export type Technology = {
 	};
 	description: string;
 };
+
+export type Data = {
+  destinations: Array<Destination>;
+  crew: Array<Crew>;
+  technology: Array<Technology>;
+}

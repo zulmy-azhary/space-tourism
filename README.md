@@ -35,14 +35,12 @@ Users should be able to:
 
 ### Built with
 
-- Semantic HTML5 markup
-- CSS custom properties
-- Flexbox
-- CSS Grid
-- Mobile-first workflow
+- [Typescript](https://www.typescriptlang.org)
 - [React](https://reactjs.org/) - JS library
 - [Next.js](https://nextjs.org/) - React framework
 - [Styled Components](https://styled-components.com/) - For styles
+- [Framer Motion](https://www.framer.com/) - For animation
+- [SWR](https://swr.vercel.app) - For Data Fetching
 
 ### What I learned
 

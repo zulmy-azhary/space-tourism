@@ -2,13 +2,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import path from "path";
 import { promises as fs } from "fs";
-import type { Destination, Crew, Technology } from "../../types";
-
-type Data = {
-  destination: Array<Destination>;
-  crew: Array<Crew>;
-  technology: Array<Technology>;
-}
+import type { Data } from "../../types";
 
 export default async function handler(
   req: NextApiRequest,
@@ -16,6 +10,6 @@ export default async function handler(
 ) {
   const jsonDirectory = path.join(process.cwd(), "json");
   const fileContents = await fs.readFile(jsonDirectory + "/data.json", "utf8");
-  const jsonData = JSON.parse(fileContents);
+  const jsonData: Data = JSON.parse(fileContents);
   res.status(200).json(jsonData);
 }

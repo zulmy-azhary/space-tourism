@@ -1,18 +1,18 @@
 import { MainLayout } from "../components/layout"
 import bg from "../assets/crew/background-crew-desktop.jpg";
-import Head from "next/head";
-import { Container } from "../components/styles/SharedStyles";
-import { NextPage } from "next";
+import { Container, Header, HeaderNumber, HeaderName } from "../components/styles/SharedStyles";
+import type { NextPage } from "next";
 
-const Crew: NextPage = () => {
+const Crew: NextPage = (): JSX.Element => {
   return (
-    <MainLayout image={bg}>
-      <Head>
-        <title>Space Tourism | Crew</title>
-        <meta name="description" content="Space tourism crew page" />
-      </Head>
+    <MainLayout title="Crew" description="Space tourism crew page" image={bg}>
       <Container>
-        <h1>MOON</h1>
+        {/* Header */}
+        <Header>
+          <HeaderNumber>02</HeaderNumber>
+          <HeaderName>Meet Your Crew</HeaderName>
+        </Header>
+        {/* Content */}
       </Container>
     </MainLayout>
   )

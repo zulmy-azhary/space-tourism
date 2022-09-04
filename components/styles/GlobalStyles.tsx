@@ -25,24 +25,23 @@ const GlobalStyles = createGlobalStyle`
     font-family: 'Barlow', -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
       Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
     background: rgb(var(--black));
+    color: rgb(var(--white));
   }
 
-  /* Font Color */
-  h1, h2, h3, h4, .subHeading-1, .subHeading-2, .navText {
+  /* Font Family & Font Color */
+  h1, h2, h3, h4 {
+    font-family: 'Bellefair';
     color: rgb(var(--white));
   }
 
   h5 {
+    font-family: 'Barlow Condensed';
     color: rgb(var(--sky));
   }
-
-  /* Font Family */
-  h1, h2, h3, h4, .subHeading-1 {
-    font-family: 'Bellefair';
-  }
-
-  h5, .subHeading-2, .navText {
-    font-family: 'Barlow Condensed';
+  
+  p {
+    font-size: 18px;
+    color: rgb(var(--sky));
   }
 
   /* Font Styling */
@@ -64,28 +63,16 @@ const GlobalStyles = createGlobalStyle`
 
   h5 {
     font-size: 1.75rem; //28px
-    letter-spacing: 4.75px;
-  }
-
-  .subHeading-1 {
-    font-size: 1.75rem; //28px
-  }
-
-  .subHeading-2 {
-    font-size: 0.875rem; //14px
-    letter-spacing: 2.35px;
-  }
-
-  .navText {
-    font-size: 1rem; //16px
-    letter-spacing: 2.7px;
+    letter-spacing: 4.72px; // 4.75 in design system
   }
 
   /* Line Height */
-  h1, h2, h3, h4, h5, .subHeading-1, .subHeading-2, .navText {
+  h1, h2, h3, h4, h5 {
     line-height: auto;
+    text-transform: uppercase;
   }
-  body, p {
+  
+  p {
     line-height: 32px;
   }
 
