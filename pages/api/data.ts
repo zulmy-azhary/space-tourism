@@ -4,12 +4,12 @@ import path from "path";
 import { promises as fs } from "fs";
 import type { Data } from "../../types";
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<Data>
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse<Data>): Promise<void> => {
   const jsonDirectory = path.join(process.cwd(), "json");
   const fileContents = await fs.readFile(jsonDirectory + "/data.json", "utf8");
   const jsonData: Data = JSON.parse(fileContents);
+  
   res.status(200).json(jsonData);
 }
+
+export default handler;

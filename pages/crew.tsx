@@ -1,6 +1,6 @@
-import { MainLayout } from "../components/layout"
+import { MainLayout } from "../components/layout";
 import bg from "../assets/crew/background-crew-desktop.jpg";
-import { Container, Header, HeaderNumber, HeaderName } from "../components/styles/SharedStyles";
+import { Container, Header, SubHeading, Heading } from "../components/styles/SharedStyles";
 import type { NextPage } from "next";
 
 const Crew: NextPage = (): JSX.Element => {
@@ -9,13 +9,13 @@ const Crew: NextPage = (): JSX.Element => {
       <Container>
         {/* Header */}
         <Header>
-          <HeaderNumber>02</HeaderNumber>
-          <HeaderName>Meet Your Crew</HeaderName>
+          <SubHeading>02</SubHeading>
+          <Heading>Meet Your Crew</Heading>
         </Header>
         {/* Content */}
       </Container>
     </MainLayout>
-  )
-}
+  );
+};
 
-export default Crew
+export default Crew;
