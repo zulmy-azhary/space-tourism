@@ -29,23 +29,18 @@ const Item = styled(NavText)`
 `;
 
 interface Props {
-  data: {
-    data: Data | undefined;
-    isValidating: boolean;
-    error?: boolean;
-  };
+  data: Data;
   handler: (item: Destination) => void;
 }
 
 const TabList = ({ data, handler }: Props): JSX.Element => {
   return (
     <List>
-      {!data.isValidating &&
-        data.data?.destinations.map((destination: Destination, idx: number) => (
-          <Item onClick={handler.bind(this, destination)} key={idx}>
-            {destination.name}
-          </Item>
-        ))}
+      {data.destinations.map((destination: Destination, idx: number) => (
+        <Item onClick={handler.bind(this, destination)} key={idx}>
+          {destination.name}
+        </Item>
+      ))}
     </List>
   );
 };

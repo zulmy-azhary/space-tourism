@@ -1,12 +1,11 @@
 import type { NextPage } from "next";
-import type { Data, Destination } from "../types";
+import type { Destination } from "../types";
 import styled from "styled-components";
 import bg from "../assets/destination/background-destination-desktop.jpg";
 import { Layout } from "../components/layout";
-import useSWR from "swr";
-import { fetcher } from "../helper";
 import { useEffect, useState } from "react";
 import { Group, Wrapper } from "../components/ui";
+import data from "../json/data.json";
 
 const Content = styled.div`
   display: flex;
@@ -18,7 +17,7 @@ const Content = styled.div`
 `;
 
 const Destination: NextPage = (): JSX.Element => {
-  const { data, isValidating } = useSWR<Data>("/api/data", fetcher);
+  // const { data, isValidating } = useSWR<Data>("/api/data", fetcher);
   const [item, setItem] = useState<Destination | undefined>({} as Destination);
 
   const itemHandler = (item: Destination) => {
@@ -26,14 +25,14 @@ const Destination: NextPage = (): JSX.Element => {
   };
   
   useEffect(() => {
-    setItem(() => data?.destinations.find((destination: Destination) => destination.name === "Moon"));
+    setItem(() => data.destinations.find((destination: Destination) => destination.name === "Moon"));
   }, [data]);
 
   return (
     <Layout title="Destination" description="Space tourism destination page" image={bg}>
       <Wrapper header={{ index: "01", title: "Pick Your Destination" }}>
         <Content>
-          <Group data={{ data, isValidating }} item={item} handler={itemHandler} />
+          <Group data={data} item={item} handler={itemHandler} />
         </Content>
       </Wrapper>
     </Layout>

@@ -23,11 +23,7 @@ const Description = styled.p`
 `;
 
 interface Props {
-  data: {
-    data: Data | undefined;
-    isValidating: boolean;
-    error?: boolean;
-  };
+  data: Data;
   item: Destination | undefined;
   handler: (item: Destination) => void;
 }
@@ -38,7 +34,7 @@ const Group = ({ data, item, handler }: Props): JSX.Element => {
       {item && (
         <>
           <ImageWrapper>
-            <Image width={445} height={445} src={img} />
+            <Image width={445} height={445} src={img} priority={true} />
           </ImageWrapper>
           <GroupWrapper>
             <TabList data={data} handler={handler} />
