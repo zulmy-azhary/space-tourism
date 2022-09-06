@@ -1,18 +1,8 @@
 import styled from "styled-components";
-import { Navbar } from "./";
+import { Navbar } from ".";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
-
-// Main Layout Props
-interface MainLayoutProps {
-  title: string;
-  description?: string;
-  image: {
-    src: string;
-  };
-  children: React.ReactNode;
-}
 
 const Container = styled.main`
   position: relative;
@@ -56,14 +46,31 @@ const variants = {
   exit: { opacity: 0, x: 200 },
 };
 
-const MainLayout = ({ title, description, image, children }: MainLayoutProps): JSX.Element => {
+// Main Layout Props
+interface LayoutProps {
+  title: string;
+  description?: string;
+  image: {
+    src: string;
+  };
+  children: React.ReactNode;
+}
+
+const Layout = ({ title, description, image, children }: LayoutProps): JSX.Element => {
   return (
     <Container>
       <Head>
         <title>Space Tourism | {title}</title>
         {description && <meta name="description" content={description} />}
       </Head>
-      <Background as={motion.div} variants={bgVariants} initial="hidden" animate="enter" exit="exit" transition={{ type: "linear", duration: .4 }}>
+      <Background
+        as={motion.div}
+        variants={bgVariants}
+        initial="hidden"
+        animate="enter"
+        exit="exit"
+        transition={{ type: "linear", duration: .4 }}
+      >
         <Image src={image.src} layout="fill" />
       </Background>
       <Navbar />
@@ -81,4 +88,4 @@ const MainLayout = ({ title, description, image, children }: MainLayoutProps): J
   );
 };
 
-export default MainLayout;
+export default Layout;

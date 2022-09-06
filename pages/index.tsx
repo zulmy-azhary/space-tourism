@@ -1,8 +1,16 @@
 import type { NextPage } from "next";
-import { MainLayout } from "../components/layout";
+import { Layout } from "../components/layout";
 import bg from "/assets/home/background-home-desktop.jpg";
-import { HomeContainer } from "../components/styles/SharedStyles";
 import styled from "styled-components";
+
+// Just for Home Page
+const Container = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: 4.5rem;
+`;
 
 const Content = styled.div`
   display: flex;
@@ -31,24 +39,27 @@ const Text = styled.h4`
   color: rgb(var(--black));
 `;
 
+const data: Record<string, string> = {
+  subHeader: "SO, YOU WANT TO TRAVEL TO",
+  header: "Space",
+  desc: "Let’s face it; if you want to go to space, you might as well genuinely go to outer space and not hover kind of on the edge of it. Well sit back, and relax because we’ll give you a truly out of this world experience!",
+  explore: "Explore",
+};
+
 const Home: NextPage = (): JSX.Element => {
   return (
-    <MainLayout title="Home" description="Space tourism home page" image={bg}>
-      <HomeContainer>
+    <Layout title="Home" description="Space tourism home page" image={bg}>
+      <Container>
         <Content>
-          <h5>SO, YOU WANT TO TRAVEL TO</h5>
-          <h1>SPACE</h1>
-          <p>
-            Let's face it; if you want to go to space, you might as well genuinely go to outer space
-            and not hover kind of on the edge of it. Well sit back, and relax because we'll give you
-            a truly out of this world experience!
-          </p>
+          <h5>{data.subHeader}</h5>
+          <h1>{data.header}</h1>
+          <p>{data.desc}</p>
         </Content>
         <Wrapper>
-          <Text>Explore</Text>
+          <Text>{data.explore}</Text>
         </Wrapper>
-      </HomeContainer>
-    </MainLayout>
+      </Container>
+    </Layout>
   );
 };
 

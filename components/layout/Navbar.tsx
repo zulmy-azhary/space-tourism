@@ -2,6 +2,7 @@ import LogoBrand from "../../assets/etc/logo.svg";
 import Link from "next/link";
 import styled from "styled-components";
 import { NavText } from "../styles/SharedStyles";
+import { dataSection as data } from "../../helper";
 
 const NavContainer = styled.nav`
   position: absolute;
@@ -70,33 +71,19 @@ const Navbar = (): JSX.Element => {
     <NavContainer>
       <Logo />
       <NavList>
-        <Link passHref href={"/"}>
-          <NavItem>
-            <NavNumber>00</NavNumber>
-            <NavText>Home</NavText>
-          </NavItem>
-        </Link>
-        <Link passHref href={"/destination"}>
-          <NavItem>
-            <NavNumber>01</NavNumber>
-            <NavText>Destination</NavText>
-          </NavItem>
-        </Link>
-        <Link passHref href={"/crew"}>
-          <NavItem>
-            <NavNumber>02</NavNumber>
-            <NavText>Crew</NavText>
-          </NavItem>
-        </Link>
-        <Link passHref href={"/technology"}>
-          <NavItem>
-            <NavNumber>03</NavNumber>
-            <NavText>Technology</NavText>
-          </NavItem>
-        </Link>
+        {data.map((item: Record<string, string>) => (
+          <Link key={item.index} passHref href={item.url}>
+            <NavItem>
+              <NavNumber>{item.index}</NavNumber>
+              <NavText>{item.name}</NavText>
+            </NavItem>
+          </Link>
+        ))}
       </NavList>
     </NavContainer>
   );
 };
+
+
 
 export default Navbar;
