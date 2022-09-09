@@ -11,7 +11,7 @@ const Header = styled.div`
   display: flex;
   column-gap: 1.75rem;
   align-items: center;
-  padding-top: 4.75rem;
+  margin-top: 4.75rem;
 `;
 
 const SubHeading = styled.h5`

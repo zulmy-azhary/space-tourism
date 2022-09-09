@@ -1,8 +1,9 @@
 import LogoBrand from "../../assets/etc/logo.svg";
 import Link from "next/link";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { NavText } from "../styles/SharedStyles";
 import { dataSection as data } from "../../helper";
+import { useRouter } from "next/router";
 
 const NavContainer = styled.nav`
   position: absolute;
@@ -43,7 +44,7 @@ const Logo = styled(LogoBrand)`
   cursor: pointer;
 `;
 
-const NavItem = styled.a`
+const NavItem = styled.a<{ pathName: string }>`
   position: relative;
   display: flex;
   column-gap: 11px;
@@ -51,15 +52,20 @@ const NavItem = styled.a`
   height: 100%;
   align-items: center;
 
-  &:hover:after {
+  &:after {
     content: "";
     position: absolute;
     height: 3px;
     width: 100%;
-    background-color: rgba(var(--white), 0.5);
+    background-color: ${props => props.href === props.pathName && "rgb(var(--white))"};
     bottom: 0;
     left: 0;
   }
+  ${props => props.href !== props.pathName && css`
+    &:hover:after{
+      background-color: rgba(var(--white), 0.5);
+    }
+  `}
 `;
 
 const NavNumber = styled(NavText)`
@@ -67,13 +73,15 @@ const NavNumber = styled(NavText)`
 `;
 
 const Navbar = (): JSX.Element => {
+  const router = useRouter();
+
   return (
     <NavContainer>
       <Logo />
       <NavList>
         {data.map((item: Record<string, string>) => (
           <Link key={item.index} passHref href={item.url}>
-            <NavItem>
+            <NavItem pathName={router.pathname}>
               <NavNumber>{item.index}</NavNumber>
               <NavText>{item.name}</NavText>
             </NavItem>

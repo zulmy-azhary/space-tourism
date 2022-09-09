@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 import { SubTitle, Title } from "../../styles/SharedStyles";
 
@@ -29,14 +30,19 @@ interface Props {
   travel: string;
 }
 
+const mVariants = {
+  out: { opacity: 0, y: 50 },
+  in: { opacity: 1, y: 0 },
+}
+
 const Info = ({distance, travel}: Props): JSX.Element => {
   return (
     <InfoWrapper>
-      <Item>
+      <Item as={motion.div} variants={mVariants} initial="out" animate="in" exit="out" transition={{ type: "linear", duration: 0.4 }}>
         <SubTitle>Avg. Distance</SubTitle>
         <Title>{distance}</Title>
       </Item>
-      <Item>
+      <Item as={motion.div} variants={mVariants} initial="out" animate="in" exit="out" transition={{ type: "linear", duration: 0.4, delay: 0.2 }}>
         <SubTitle>Est. Travel Time</SubTitle>
         <Title>{travel}</Title>
       </Item>

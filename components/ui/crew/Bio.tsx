@@ -2,9 +2,9 @@ import styled from "styled-components";
 import { Crew } from "../../../types";
 
 const BioWrapper = styled.div`
-/* height: 100%; */
+  /* height: 100%; */
   width: fit-content;
-  padding-top: 9.625rem;
+  margin-top: 9.625rem;
 `;
 
 const Role = styled.h4`
@@ -18,15 +18,15 @@ const Description = styled.p`
 `;
 
 interface Props {
-  item: Crew;
+  crew: Crew;
 }
 
-const Bio = ({item}: Props): JSX.Element => {
+const Bio = ({ crew }: Props): JSX.Element => {
   return (
     <BioWrapper>
-      <Role>{item.role}</Role>
-      <h3>{item.name}</h3>
-      <Description>{item.bio}</Description>
+      <Role>{crew.role}</Role>
+      <h3>{crew.name}</h3>
+      <Description>{crew.bio}</Description>
     </BioWrapper>
   )
 }

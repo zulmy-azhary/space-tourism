@@ -1,18 +1,9 @@
 import styled from "styled-components";
-import type { Data, Destination } from "../../../types";
+import type { Destination } from "../../../types";
 import TabList from "./TabList";
-import Image from "next/image";
-import img from "/assets/destination/image-moon.png";
 import Info from "./Info";
-
-const ImageWrapper = styled.div`
-  width: 100%;
-  min-width: 27.813rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  user-select: none;
-`;
+import { AnimatePresence, motion } from "framer-motion";
+import React, { useEffect } from "react";
 
 const GroupWrapper = styled.div`
   width: fit-content;
@@ -24,24 +15,27 @@ const Description = styled.p`
 `;
 
 interface Props {
-  data: Data;
+  data: Destination[];
   item: Destination;
   handler: (item: string) => void;
+  selected: string | undefined
 }
 
-const Group = ({ data, item, handler }: Props): JSX.Element => {
+const mVariants = {
+  out: { x: 100, opacity: 0 },
+  in: { x: 0, opacity: 1 },
+
+}
+
+const Group = ({ data, item, handler, selected }: Props): JSX.Element => {
+
   return (
-    <>
-      <ImageWrapper>
-        <Image width={445} height={445} src={img} priority={true} />
-      </ImageWrapper>
-      <GroupWrapper>
-        <TabList data={data} handler={handler} />
-        <h2>{item.name}</h2>
-        <Description>{item.description}</Description>
-        <Info distance={item.distance} travel={item.travel} />
-      </GroupWrapper>
-    </>
+    <GroupWrapper>
+      <TabList data={data} handler={handler} selected={selected} />
+      <motion.h2 variants={mVariants} initial="out" animate="in" exit="out" transition={{ type: "linear", duration: .4 }}>{item.name}</motion.h2>
+      <Description as={motion.p} variants={mVariants} initial="out" animate="in" exit="out" transition={{ type: "linear", duration: .4, delay: .2 }}>{item.description}</Description>
+      <Info distance={item.distance} travel={item.travel} />
+    </GroupWrapper>
   )
 }
 

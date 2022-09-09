@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import { Layout } from "../components/layout";
 import bg from "/assets/home/background-home-desktop.jpg";
 import styled from "styled-components";
+import { Circle } from "../components/utils";
 
 // Just for Home Page
 const Container = styled.div`
@@ -35,9 +36,9 @@ const Wrapper = styled.div`
   }
 `;
 
-const Text = styled.h4`
-  color: rgb(var(--black));
-`;
+// const Text = styled.h4`
+//   color: rgb(var(--black));
+// `;
 
 const data: Record<string, string> = {
   subHeader: "SO, YOU WANT TO TRAVEL TO",
@@ -46,7 +47,7 @@ const data: Record<string, string> = {
   explore: "Explore",
 };
 
-const Home: NextPage = (): JSX.Element => {
+const HomePage: NextPage = (): JSX.Element => {
   return (
     <Layout title="Home" description="Space tourism home page" image={bg}>
       <Container>
@@ -55,12 +56,12 @@ const Home: NextPage = (): JSX.Element => {
           <h1>{data.header}</h1>
           <p>{data.desc}</p>
         </Content>
-        <Wrapper>
-          <Text>{data.explore}</Text>
-        </Wrapper>
+        <Circle size="17.125rem" type="primary">
+          {data.explore}
+        </Circle>
       </Container>
     </Layout>
   );
 };
 
-export default Home;
+export default HomePage;

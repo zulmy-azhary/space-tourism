@@ -4,7 +4,7 @@ import type { NextPage } from "next";
 import { Bio, Wrapper } from "../components/ui";
 import styled from "styled-components";
 import data from "../json/data.json";
-import { Crew } from "../types";
+import type { Crew } from "../types";
 import { useState } from "react";
 import Image from "next/image";
 import img from "../assets/crew/image-douglas-hurley.png";
@@ -23,23 +23,22 @@ const CrewPic = styled.div`
   right: 0;
 `;
 
-const Crew: NextPage = (): JSX.Element => {
-  const [crew, setCrew] = useState<Crew>([...data.crew].shift() as Crew);
+const CrewPage: NextPage = (): JSX.Element => {
+  const crews: Crew[] = data.crew;
+  const [crew, setCrew] = useState<Crew | undefined>([...crews].shift());
   
   return (
     <Layout title="Crew" description="Space tourism crew page" image={bg}>
       <Wrapper header={{ index: "02", title: "Meet Your Crew" }}>
         <Content>
-          <>
-            <Bio item={crew} />
-            <CrewPic>
-              <Image layout="intrinsic" src={img} />
-            </CrewPic>
-          </>
+          {crew && <Bio crew={crew} />}
+          <CrewPic>
+            <Image layout="intrinsic" src={img} />
+          </CrewPic>
         </Content>
       </Wrapper>
     </Layout>
   );
 };
 
-export default Crew;
+export default CrewPage;
