@@ -11,6 +11,7 @@ const ImageWrapper = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  user-select: none;
 `;
 
 const GroupWrapper = styled.div`
@@ -24,26 +25,22 @@ const Description = styled.p`
 
 interface Props {
   data: Data;
-  item: Destination | undefined;
-  handler: (item: Destination) => void;
+  item: Destination;
+  handler: (item: string) => void;
 }
 
 const Group = ({ data, item, handler }: Props): JSX.Element => {
   return (
     <>
-      {item && (
-        <>
-          <ImageWrapper>
-            <Image width={445} height={445} src={img} priority={true} />
-          </ImageWrapper>
-          <GroupWrapper>
-            <TabList data={data} handler={handler} />
-            <h2>{item.name}</h2>
-            <Description>{item.description}</Description>
-            <Info distance={item.distance} travel={item.travel} />
-          </GroupWrapper>
-        </>
-      )}
+      <ImageWrapper>
+        <Image width={445} height={445} src={img} priority={true} />
+      </ImageWrapper>
+      <GroupWrapper>
+        <TabList data={data} handler={handler} />
+        <h2>{item.name}</h2>
+        <Description>{item.description}</Description>
+        <Info distance={item.distance} travel={item.travel} />
+      </GroupWrapper>
     </>
   )
 }

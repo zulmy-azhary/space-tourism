@@ -5,6 +5,7 @@ const InfoWrapper = styled.div`
   display: flex;
   column-gap: 4.938rem;
   position: relative;
+  padding-top: 1.75rem;
 
   &:before {
     position: absolute;
@@ -12,6 +13,8 @@ const InfoWrapper = styled.div`
     width: 100%;
     height: 1px;
     background-color: #383b4b;
+    top: 0;
+    left: 0;
   }
 `;
 
@@ -19,7 +22,6 @@ const Item = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: .75rem;
-  padding-top: 1.75rem;
 `;
 
 interface Props {

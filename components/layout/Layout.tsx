@@ -17,6 +17,7 @@ const Background = styled.div`
   position: absolute;
   z-index: 0;
   pointer-events: none;
+  user-select: none;
   top: 0;
   bottom: 0;
   left: 0;

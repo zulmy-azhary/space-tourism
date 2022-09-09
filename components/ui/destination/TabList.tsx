@@ -30,14 +30,14 @@ const Item = styled(NavText)`
 
 interface Props {
   data: Data;
-  handler: (item: Destination) => void;
+  handler: (name: string) => void;
 }
 
 const TabList = ({ data, handler }: Props): JSX.Element => {
   return (
     <List>
       {data.destinations.map((destination: Destination, idx: number) => (
-        <Item onClick={handler.bind(this, destination)} key={idx}>
+        <Item onClick={() => handler(destination.name)} key={idx}>
           {destination.name}
         </Item>
       ))}
