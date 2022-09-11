@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { device } from "../../helper";
 
 const GlobalStyles = createGlobalStyle`
   :root {
@@ -46,11 +47,11 @@ const GlobalStyles = createGlobalStyle`
 
   /* Font Styling */
   h1 {
-    font-size: 9.375rem; //150px
+    font-size: 150px;
   }
 
   h2 {
-    font-size: 6.25rem; //100px
+    font-size: 100px;
   }
 
   h3 {
@@ -74,6 +75,27 @@ const GlobalStyles = createGlobalStyle`
   
   p {
     line-height: 32px;
+  }
+
+  li {
+    width: fit-content;
+    height: 100%;
+    list-style: none;
+  }
+
+  @media ${device.tablet.mediaQuery} {
+    h2 {
+      font-size: 80px;
+    }
+  }
+  @media ${device.mobile.mediaQuery} {
+    h1 {
+      font-size: 80px;
+    }
+    
+    h2 {
+      font-size: 56px;
+    }
   }
 
   /* @media (prefers-color-scheme: dark) {

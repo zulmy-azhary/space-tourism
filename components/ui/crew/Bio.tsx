@@ -2,9 +2,7 @@ import styled from "styled-components";
 import { Crew } from "../../../types";
 
 const BioWrapper = styled.div`
-  /* height: 100%; */
   width: fit-content;
-  margin-top: 9.625rem;
 `;
 
 const Role = styled.h4`

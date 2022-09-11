@@ -1,3 +1,4 @@
+import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
 import type { Destination } from "../../../types";
 import { NavText } from "../../styles/SharedStyles";
@@ -10,9 +11,9 @@ const List = styled.ul`
   margin-bottom: 2.313rem;
 `;
 
-const Item = styled(NavText)<{selected: string | undefined, name: string}>`
+const Item = styled(NavText)<{ selected?: string, name: string }>`
   position: relative;
-  color: rgb(var(--${props => props.selected === props.name ? "white" : "sky"}));
+  color: rgb(var(--${({ selected, name }) => selected === name ? "white" : "sky"}));
   height: 100%;
   text-align: center;
   cursor: pointer;
@@ -22,12 +23,13 @@ const Item = styled(NavText)<{selected: string | undefined, name: string}>`
     position: absolute;
     height: 3px;
     width: 100%;
-    background-color: ${props => props.selected === props.name && "rgb(var(--white))"};
+    background-color: ${({ selected, name }) => selected === name && "rgb(var(--white))"};
     bottom: 0;
     left: 0;
+    transition: .2s;
   }
 
-  ${props => props.selected !== props.name && css`
+  ${({ selected, name }) => selected !== name && css`
     &:hover:after {
       background-color: rgba(var(--white), .5);
     }
@@ -35,17 +37,23 @@ const Item = styled(NavText)<{selected: string | undefined, name: string}>`
 `;
 
 interface Props {
-  data: Destination[];
+  destinations: Destination[];
   handler: (name: string) => void;
   selected: string | undefined;
 }
 
-const TabList = ({ data, handler, selected }: Props): JSX.Element => {
+const TabList = ({ destinations, handler, selected }: Props): JSX.Element => {
 
   return (
     <List>
-      {data.map((destination: Destination, idx: number) => (
-        <Item selected={selected} name={destination.name} onClick={() => handler(destination.name)} key={idx}>
+      {destinations.map((destination: Destination, idx: number) => (
+        <Item
+          key={idx}
+          as={motion.li}
+          selected={selected}
+          name={destination.name}
+          onClick={() => handler(destination.name)}
+        >
           {destination.name}
         </Item>
       ))}

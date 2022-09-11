@@ -1,4 +1,4 @@
-import LogoBrand from "../../assets/etc/logo.svg";
+import LogoBrand from "../../assets/logo.svg";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { NavText } from "../styles/SharedStyles";
@@ -22,7 +22,8 @@ const NavContainer = styled.nav`
     position: absolute;
     height: 1px;
     width: 473px;
-    background-color: rgba(var(--white), 0.25);mix-blend-mode: normal;
+    background-color: rgba(var(--white), 0.25);
+    mix-blend-mode: normal;
     left: 170px;
     z-index: 2;
   }
@@ -57,12 +58,14 @@ const NavItem = styled.a<{ pathName: string }>`
     position: absolute;
     height: 3px;
     width: 100%;
-    background-color: ${props => props.href === props.pathName && "rgb(var(--white))"};
+    background-color: ${({ href, pathName }) =>
+    href === pathName && "rgb(var(--white))"};
     bottom: 0;
     left: 0;
+    transition: .2s;
   }
-  ${props => props.href !== props.pathName && css`
-    &:hover:after{
+  ${({ href, pathName }) => href !== pathName && css`
+    &:hover:after {
       background-color: rgba(var(--white), 0.5);
     }
   `}
@@ -80,12 +83,14 @@ const Navbar = (): JSX.Element => {
       <Logo />
       <NavList>
         {data.map((item: Record<string, string>) => (
-          <Link key={item.index} passHref href={item.url}>
-            <NavItem pathName={router.pathname}>
-              <NavNumber>{item.index}</NavNumber>
-              <NavText>{item.name}</NavText>
-            </NavItem>
-          </Link>
+          <li key={item.index}>
+            <Link passHref href={item.url}>
+              <NavItem pathName={router.pathname}>
+                <NavNumber>{item.index}</NavNumber>
+                <NavText>{item.name}</NavText>
+              </NavItem>
+            </Link>
+          </li>
         ))}
       </NavList>
     </NavContainer>

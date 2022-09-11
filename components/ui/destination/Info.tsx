@@ -33,21 +33,35 @@ interface Props {
 const mVariants = {
   out: { opacity: 0, y: 50 },
   in: { opacity: 1, y: 0 },
-}
+};
 
-const Info = ({distance, travel}: Props): JSX.Element => {
+const Info = ({ distance, travel }: Props): JSX.Element => {
   return (
     <InfoWrapper>
-      <Item as={motion.div} variants={mVariants} initial="out" animate="in" exit="out" transition={{ type: "linear", duration: 0.4 }}>
+      <Item
+        as={motion.div}
+        variants={mVariants}
+        initial="out"
+        animate="in"
+        exit="out"
+        transition={{ type: "linear", duration: 0.4 }}
+      >
         <SubTitle>Avg. Distance</SubTitle>
         <Title>{distance}</Title>
       </Item>
-      <Item as={motion.div} variants={mVariants} initial="out" animate="in" exit="out" transition={{ type: "linear", duration: 0.4, delay: 0.2 }}>
+      <Item
+        as={motion.div}
+        variants={mVariants}
+        initial="out"
+        animate="in"
+        exit="out"
+        transition={{ type: "linear", duration: 0.4, delay: 0.2 }}
+      >
         <SubTitle>Est. Travel Time</SubTitle>
         <Title>{travel}</Title>
       </Item>
     </InfoWrapper>
-  )
-}
+  );
+};
 
 export default Info;

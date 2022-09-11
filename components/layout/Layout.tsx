@@ -26,8 +26,6 @@ const Background = styled.div`
 
 const Content = styled.div`
   position: relative;
-  padding-left: 165px;
-  padding-right: 165px;
   padding-top: 136px;
   display: flex;
   justify-content: center;
@@ -41,7 +39,7 @@ const bgVariants = {
   exit: { opacity: 0 },
 }
 
-const variants = {
+const contentVariants = {
   hidden: { opacity: 0, x: -200 },
   enter: { opacity: 1, x: 0 },
   exit: { opacity: 0, x: 200 },
@@ -55,7 +53,7 @@ interface LayoutProps {
     src: string;
   };
   children: React.ReactNode;
-}
+};
 
 const Layout = ({ title, description, image, children }: LayoutProps): JSX.Element => {
   return (
@@ -72,12 +70,12 @@ const Layout = ({ title, description, image, children }: LayoutProps): JSX.Eleme
         exit="exit"
         transition={{ type: "linear", duration: .4 }}
       >
-        <Image src={image.src} layout="fill" />
+        <Image src={image.src} layout="fill" alt="background-image" />
       </Background>
       <Navbar />
       <Content
         as={motion.div}
-        variants={variants}
+        variants={contentVariants}
         initial="hidden"
         animate="enter"
         exit="exit"

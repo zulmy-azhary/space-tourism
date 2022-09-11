@@ -12,6 +12,8 @@ const Header = styled.div`
   column-gap: 1.75rem;
   align-items: center;
   margin-top: 4.75rem;
+  padding-left: 165px;
+  padding-right: 165px;
 `;
 
 const SubHeading = styled.h5`
