@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { Layout } from "../components/layout";
-import bg from "/public/assets/home/background-home-desktop.jpg";
 import styled from "styled-components";
 import { MainCircle } from "../components/utils";
 import { device } from "../helper";
@@ -12,12 +11,20 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 4.5rem;
-  margin-left: 165px;
-  margin-right: 165px;
+  margin: 4.5rem 165px 0;
+
+  @media ${device.tablet.mediaQuery} {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-left: 0;
+    margin-right: 0;
+    row-gap: 156px;
+  }
 
   @media ${device.mobile.mediaQuery} {
-    flex-direction: column;
+    row-gap: 81px;
+    margin-top: 0;
   }
 `;
 
@@ -26,6 +33,15 @@ const Content = styled.div`
   flex-direction: column;
   row-gap: 24px;
   width: 450px;
+
+  @media ${device.tablet.mediaQuery} {
+    width: 444px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    width: 100%;
+    row-gap: 16px;
+  }
 `;
 
 const data: Record<string, string> = {
@@ -38,14 +54,14 @@ const data: Record<string, string> = {
 const HomePage: NextPage = (): JSX.Element => {
   
   return (
-    <Layout title="Home" description="Space tourism home page" image={bg}>
+    <Layout title="Home" description="Space tourism home page">
       <Container>
         <Content>
           <h5>{data.subHeader}</h5>
           <h1>{data.header}</h1>
           <p>{data.desc}</p>
         </Content>
-        <MainCircle size="17.125rem">
+        <MainCircle>
           {data.explore}
         </MainCircle>
       </Container>

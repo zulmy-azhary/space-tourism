@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import { Layout } from "../components/layout";
-import bg from "/public/assets/technology/background-technology-desktop.jpg";
 import data from "../json/data.json";
 import type { Technology } from "../types";
 import { useState } from "react";
@@ -56,14 +55,14 @@ const TechnologyPage: NextPage = (): JSX.Element => {
   };
 
   return (
-    <Layout title="Technology" description="Space tourism technology page" image={bg}>
+    <Layout title="Technology" description="Space tourism technology page">
       <Wrapper header={{ index: "03", title: "Space Launch 101" }}>
         <AnimatePresence mode="wait" initial={false}>
           {tech && (
             <Content key={tech.name}>
               <Main>
                 <Dots>
-                  {teches.map((technology: Technology, idx: number) => (
+                  {teches.map((technology: Technology, idx: number): JSX.Element => (
                     <Circle
                       onClick={() => techHandler(technology.name)}
                       key={idx}
@@ -74,8 +73,7 @@ const TechnologyPage: NextPage = (): JSX.Element => {
                     </Circle>
                   ))}
                 </Dots>
-                <Details
-                >
+                <Details>
                   <SubText
                     as={motion.div}
                     initial={{ opacity: 0, x: -50 }}
@@ -105,7 +103,7 @@ const TechnologyPage: NextPage = (): JSX.Element => {
                 </Details>
               </Main>
               <motion.div
-                initial={{ opacity: 0, y: 100 }}
+                initial={{ opacity: 0, y: 50 }}
                 animate={{ opacity: 1, x: 0, y: 0 }}
                 exit={{ opacity: 0, x: 100 }}
                 transition={{ type: "linear", duration: .4, delay: .3 }}

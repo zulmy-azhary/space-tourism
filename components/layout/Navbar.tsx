@@ -2,8 +2,12 @@ import LogoBrand from "../../assets/logo.svg";
 import Link from "next/link";
 import styled, { css } from "styled-components";
 import { NavText } from "../styles/SharedStyles";
-import { dataSection as data } from "../../helper";
+import { dataSection as data, device } from "../../helper";
 import { useRouter } from "next/router";
+import { useContext } from "react";
+import HamburgerMenu from "../../assets/icon-hamburger.svg";
+import CloseMenu from "../../assets/icon-close.svg";
+import { MediaContext, ToggleContext } from "../../context";
 
 const NavContainer = styled.nav`
   position: absolute;
@@ -27,6 +31,19 @@ const NavContainer = styled.nav`
     left: 170px;
     z-index: 2;
   }
+
+  @media ${device.tablet.mediaQuery} {
+    margin-top: 0;
+    padding-left: 39px;
+
+    &:before {
+      display: none;
+    }
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    padding: 0 24px;
+  }
 `;
 
 const NavList = styled.ul`
@@ -39,10 +56,17 @@ const NavList = styled.ul`
   align-items: center;
   background: rgba(var(--white), 0.04);
   backdrop-filter: blur(81.55px);
+
+  @media ${device.tablet.mediaQuery} {
+    padding-left: 50px;
+    padding-right: 50px;
+    column-gap: 37px;
+  }
 `;
 
 const Logo = styled(LogoBrand)`
   cursor: pointer;
+  scale: .83;
 `;
 
 const NavItem = styled.a<{ pathName: string }>`
@@ -77,22 +101,29 @@ const NavNumber = styled(NavText)`
 
 const Navbar = (): JSX.Element => {
   const router = useRouter();
+  const { mobile, tablet } = useContext(MediaContext);
+  const { toggle, setToggle } = useContext(ToggleContext);
 
   return (
     <NavContainer>
       <Logo />
-      <NavList>
+      {!mobile && <NavList>
         {data.map((item: Record<string, string>) => (
           <li key={item.index}>
             <Link passHref href={item.url}>
               <NavItem pathName={router.pathname}>
-                <NavNumber>{item.index}</NavNumber>
+                {!tablet && <NavNumber>{item.index}</NavNumber>}
                 <NavText>{item.name}</NavText>
               </NavItem>
             </Link>
           </li>
         ))}
-      </NavList>
+      </NavList>}
+      {mobile &&
+        <div onClick={() => setToggle(prev => !prev)}>
+          {toggle ? <CloseMenu /> : <HamburgerMenu />}
+        </div>
+      }
     </NavContainer>
   );
 };

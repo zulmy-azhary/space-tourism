@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { mediaState } from "../../helper";
 
 const Wrapper = styled.div<WrapperStyle>`
   width: ${({ size }) => size};
@@ -40,7 +41,7 @@ const Text = styled.h4`
 `;
 
 interface WrapperStyle {
-  size?: string;
+  size?: string | number;
 }
 
 type Props = WrapperStyle & {
@@ -48,7 +49,9 @@ type Props = WrapperStyle & {
   onClick?: () => void;
 };
 
-const MainCircle = ({ size, children, onClick }: Props): JSX.Element => {
+const MainCircle = ({ children, onClick }: Props): JSX.Element => {
+  const size: string | number = mediaState("150px", "242px", "274px");
+
   return (
     <Wrapper size={size} onClick={onClick}>
       <Text>{children}</Text>

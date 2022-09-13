@@ -3,6 +3,9 @@ import { Navbar } from ".";
 import { motion } from "framer-motion";
 import Head from "next/head";
 import Image from "next/image";
+import { device } from "../../helper";
+import { useContext, useEffect } from "react";
+import { BackgroundContext } from "../../context";
 
 const Container = styled.main`
   position: relative;
@@ -11,6 +14,10 @@ const Container = styled.main`
   height: 100%;
   min-height: 100vh;
   transition: .5s;
+
+  @media ${device.tablet.mediaQuery} {
+    overflow-y: auto;
+  }
 `;
 
 const Background = styled.div`
@@ -30,7 +37,15 @@ const Content = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 100vh;
+  height: 100%;
+  min-height: 100vh;
+
+  @media ${device.tablet.mediaQuery} {
+    padding-top: 96px;
+  }
+  @media ${device.mobile.mediaQuery} {
+    padding: 96px 24px 0;
+  }
 `;
 
 const bgVariants = {
@@ -49,13 +64,16 @@ const contentVariants = {
 interface LayoutProps {
   title: string;
   description?: string;
-  image: {
-    src: string;
-  };
   children: React.ReactNode;
 };
 
-const Layout = ({ title, description, image, children }: LayoutProps): JSX.Element => {
+const Layout = ({ title, description, children }: LayoutProps): JSX.Element => {
+  const { background, setPath } = useContext(BackgroundContext);
+
+  useEffect(() => {
+    setPath(title.toLowerCase());
+  }, [title]);
+  
   return (
     <Container>
       <Head>
@@ -70,7 +88,7 @@ const Layout = ({ title, description, image, children }: LayoutProps): JSX.Eleme
         exit="exit"
         transition={{ type: "linear", duration: .4 }}
       >
-        <Image src={image.src} layout="fill" alt="background-image" />
+        <Image src={background} layout="fill" alt="background-image" />
       </Background>
       <Navbar />
       <Content

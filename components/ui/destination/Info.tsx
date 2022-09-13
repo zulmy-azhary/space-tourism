@@ -1,12 +1,13 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
+import { device } from "../../../helper";
 import { SubTitle, Title } from "../../styles/SharedStyles";
 
 const InfoWrapper = styled.div`
   display: flex;
   column-gap: 4.938rem;
   position: relative;
-  padding-top: 1.75rem;
+  padding-top: 28px;
 
   &:before {
     position: absolute;
@@ -16,6 +17,15 @@ const InfoWrapper = styled.div`
     background-color: #383b4b;
     top: 0;
     left: 0;
+  }
+
+  @media ${device.tablet.mediaQuery} {
+    justify-content: center;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    flex-direction: column;
+    row-gap: 32px;
   }
 `;
 

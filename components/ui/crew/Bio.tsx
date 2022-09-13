@@ -3,6 +3,7 @@ import { Crew } from "../../../types";
 
 const BioWrapper = styled.div`
   width: fit-content;
+  flex-basis: 50%;
 `;
 
 const Role = styled.h4`

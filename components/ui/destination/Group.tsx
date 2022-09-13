@@ -3,14 +3,18 @@ import type { Destination } from "../../../types";
 import TabList from "./TabList";
 import Info from "./Info";
 import { motion } from "framer-motion";
+import { device } from "../../../helper";
 
 const GroupWrapper = styled.div`
   width: fit-content;
 `;
 
 const Description = styled.p`
-  margin-top: .875rem;
-  margin-bottom: 3.375rem;
+  margin: 14px 0 54px;
+
+  @media ${device.tablet.mediaQuery} {
+    margin: 8px 0 49px;
+  }
 `;
 
 interface Props {

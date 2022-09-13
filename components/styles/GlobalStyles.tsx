@@ -35,17 +35,6 @@ const GlobalStyles = createGlobalStyle`
     color: rgb(var(--white));
   }
 
-  h5 {
-    font-family: 'Barlow Condensed';
-    color: rgb(var(--sky));
-  }
-  
-  p {
-    font-size: 18px;
-    color: rgb(var(--sky));
-  }
-
-  /* Font Styling */
   h1 {
     font-size: 150px;
   }
@@ -55,15 +44,18 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h3 {
-    font-size: 3.5rem; //56px
+    font-size: 56px;
   }
 
   h4 {
-    font-size: 2rem; //32px
+    font-size: 32px;
+    letter-spacing: 2px;
   }
 
   h5 {
-    font-size: 1.75rem; //28px
+    font-family: 'Barlow Condensed';
+    color: rgb(var(--sky));
+    font-size: 28px;
     letter-spacing: 4.72px; // 4.75 in design system
   }
 
@@ -74,6 +66,8 @@ const GlobalStyles = createGlobalStyle`
   }
   
   p {
+    font-size: 18px;
+    color: rgb(var(--sky));
     line-height: 32px;
   }
 
@@ -87,7 +81,18 @@ const GlobalStyles = createGlobalStyle`
     h2 {
       font-size: 80px;
     }
+
+    h5 { 
+      font-size: 20px;
+      letter-spacing: 3.38px
+    }
+
+    p {
+      font-size: 16px;
+      line-height: 28px;
+    }
   }
+
   @media ${device.mobile.mediaQuery} {
     h1 {
       font-size: 80px;
@@ -95,6 +100,20 @@ const GlobalStyles = createGlobalStyle`
     
     h2 {
       font-size: 56px;
+    }
+
+    h4 {
+      font-size: 20px;
+      letter-spacing: 1.25px;
+    }
+
+    h5 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 15px;
+      line-height: 25px;
     }
   }
 

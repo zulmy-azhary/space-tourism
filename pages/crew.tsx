@@ -1,5 +1,4 @@
 import { Layout } from "../components/layout";
-import bg from "/public/assets/crew/background-crew-desktop.jpg";
 import type { NextPage } from "next";
 import styled, { css } from "styled-components";
 import data from "../json/data.json";
@@ -22,7 +21,7 @@ const Main = styled.div`
   justify-content: space-between;
   align-items: flex-start;
   margin-top: 9.625rem;
-  row-gap: 5rem;
+  row-gap: 7.5rem;
 `;
 
 const CrewPic = styled.div`
@@ -63,7 +62,7 @@ const CrewPage: NextPage = (): JSX.Element => {
   }
   
   return (
-    <Layout title="Crew" description="Space tourism crew page" image={bg}>
+    <Layout title="Crew" description="Space tourism crew page">
       <Wrapper header={{ index: "02", title: "Meet Your Crew" }}>
         {crew && (
           <>

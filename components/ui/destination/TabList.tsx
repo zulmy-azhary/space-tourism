@@ -1,14 +1,24 @@
 import { motion } from "framer-motion";
 import styled, { css } from "styled-components";
+import { device } from "../../../helper";
 import type { Destination } from "../../../types";
 import { NavText } from "../../styles/SharedStyles";
 
 const List = styled.ul`
   height: 2.125rem;
   display: flex;
-  column-gap: 2.25rem;
+  column-gap: 36px;
   align-items: center;
-  margin-bottom: 2.313rem;
+  margin-bottom: 37px;
+
+  @media ${device.tablet.mediaQuery} {
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    column-gap: 27px;
+  }
 `;
 
 const Item = styled(NavText)<{ selected?: string, name: string }>`
