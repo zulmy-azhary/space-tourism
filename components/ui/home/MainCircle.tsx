@@ -1,4 +1,4 @@
-import { forwardRef } from "react";
+import { forwardRef, ForwardRefRenderFunction } from "react";
 import styled from "styled-components";
 import { device, mediaState } from "../../../helper";
 
@@ -72,7 +72,7 @@ type Props = WrapperStyle & {
   href?: string;
 };
 
-const MainCircle = forwardRef<HTMLAnchorElement, Props>(({ text, onClick, href }, ref): JSX.Element => {
+const MainCircle: ForwardRefRenderFunction<HTMLAnchorElement, Props> = ({ text, onClick, href }, ref): JSX.Element => {
   const size: string | number = mediaState("150px", "242px", "274px");
 
   return (
@@ -80,6 +80,6 @@ const MainCircle = forwardRef<HTMLAnchorElement, Props>(({ text, onClick, href }
       <Text>{text}</Text>
     </Wrapper>
   )
-});
+};
 
-export default MainCircle;
+export default forwardRef(MainCircle);
