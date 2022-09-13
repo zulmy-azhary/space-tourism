@@ -44,9 +44,7 @@ const HomePage: NextPage = (): JSX.Element => {
       <Container>
         <Content subHeader={data.subHeader} header={data.header} desc={data.desc} />
         <Link passHref href={"/destination"}>
-          <MainCircle>
-            {data.explore}
-          </MainCircle>
+          <MainCircle text={data.explore} />
         </Link>
       </Container>
     </Layout>

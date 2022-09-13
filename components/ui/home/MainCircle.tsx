@@ -2,7 +2,7 @@ import { forwardRef } from "react";
 import styled from "styled-components";
 import { device, mediaState } from "../../../helper";
 
-const Wrapper = styled.div<WrapperStyle>`
+const Wrapper = styled.a<WrapperStyle>`
   width: ${({ size }) => size};
   height: ${({ size }) => size};
   background-color: rgb(var(--white));
@@ -15,6 +15,7 @@ const Wrapper = styled.div<WrapperStyle>`
   transition: .2s;
   position: relative;
   z-index: 2;
+  text-decoration: none;
 
   &:after {
     content: "";
@@ -51,6 +52,14 @@ const Wrapper = styled.div<WrapperStyle>`
 
 const Text = styled.h4`
   color: rgb(var(--type));
+
+  @media ${device.tablet.mediaQuery} {
+    font-size: 32px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    font-size: 20px;
+  }
 `;
 
 interface WrapperStyle {
@@ -58,18 +67,19 @@ interface WrapperStyle {
 }
 
 type Props = WrapperStyle & {
-  children: React.ReactNode;
+  text: string;
   onClick?: () => void;
+  href?: string;
 };
 
-const MainCircle = forwardRef<HTMLDivElement, Props>(({ children, onClick }, ref): JSX.Element => {
+const MainCircle = forwardRef<HTMLAnchorElement, Props>(({ text, onClick, href }, ref): JSX.Element => {
   const size: string | number = mediaState("150px", "242px", "274px");
 
   return (
-    <Wrapper size={size} onClick={onClick} ref={ref}>
-      <Text>{children}</Text>
+    <Wrapper href={href} size={size} onClick={onClick} ref={ref}>
+      <Text>{text}</Text>
     </Wrapper>
   )
 });
 
-export default MainCircle
+export default MainCircle;
