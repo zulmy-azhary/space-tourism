@@ -1,31 +1,47 @@
 import styled from "styled-components";
-import { Crew } from "../../../types";
+import { device } from "../../../helper";
 
 const BioWrapper = styled.div`
   width: fit-content;
-  flex-basis: 50%;
+  min-height: fit-content;
 `;
 
 const Role = styled.h4`
   color: rgba(var(--white), .542);
   mix-blend-mode: normal;
-  margin-bottom: .938rem;
+  margin-bottom: 15px;
+
+  @media ${device.tablet.mediaQuery} {
+    margin-bottom: 8px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    font-size: 16px;
+  }
 `;
 
 const Description = styled.p`
   max-width: 27.75rem;
+  margin-top: 27px;
+
+  @media ${device.tablet.mediaQuery} {
+    max-width: 100%;
+    margin-top: 16px;
+  }
 `;
 
 interface Props {
-  crew: Crew;
+  role: string;
+  name: string;
+  bio: string;
 }
 
-const Bio = ({ crew }: Props): JSX.Element => {
+const Bio = ({ role, name, bio }: Props): JSX.Element => {
   return (
     <BioWrapper>
-      <Role>{crew.role}</Role>
-      <h3>{crew.name}</h3>
-      <Description>{crew.bio}</Description>
+      <Role>{role}</Role>
+      <h3>{name}</h3>
+      <Description>{bio}</Description>
     </BioWrapper>
   )
 }

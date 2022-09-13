@@ -5,7 +5,7 @@ import type { Destination } from "../../../types";
 import { NavText } from "../../styles/SharedStyles";
 
 const List = styled.ul`
-  height: 2.125rem;
+  height: 34px;
   display: flex;
   column-gap: 36px;
   align-items: center;
@@ -18,6 +18,7 @@ const List = styled.ul`
 
   @media ${device.mobile.mediaQuery} {
     column-gap: 27px;
+    margin-bottom: 20px;
   }
 `;
 
@@ -44,6 +45,16 @@ const Item = styled(NavText)<{ selected?: string, name: string }>`
       background-color: rgba(var(--white), .5);
     }
   `};
+
+  @media ${device.tablet.mediaQuery} {
+    font-size: 16px;
+    letter-spacing: 2.7px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    font-size: 14px;
+    letter-spacing: 2.36px;
+  }
 `;
 
 interface Props {

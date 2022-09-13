@@ -21,14 +21,15 @@ const Content = styled.div`
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: column;
-    margin: 60px 97px 0;
+    margin: 60px 97px 48px;
     padding: 0;
     row-gap: 53px;
     text-align: center;
   }
 
   @media ${device.mobile.mediaQuery} {
-    margin: 60px 0 0;
+    margin: 32px 0 0;
+    row-gap: 26px;
   }
 `;
 

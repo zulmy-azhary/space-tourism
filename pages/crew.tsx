@@ -5,14 +5,28 @@ import data from "../json/data.json";
 import type { Crew } from "../types";
 import { useState } from "react";
 import Wrapper from "../components/ui/Wrapper";
-import { Bio } from "../components/ui/crew";
-import { filterImage } from "../helper";
+import { Bio, Dots } from "../components/ui/crew";
+import { device, filterImage } from "../helper";
 
 const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding-left: 165px;
+
+  @media ${device.tablet.mediaQuery} {
+    flex-direction: column;
+    padding-left: 0;
+    text-align: center;
+    margin: 0 80px;
+    row-gap: 66px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    flex-direction: column-reverse;
+    margin: 32px 0 0;
+    row-gap: 32px;
+  }
 `;
 
 const Main = styled.div`
@@ -20,8 +34,20 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 9.625rem;
-  row-gap: 7.5rem;
+  margin-top: 154px;
+  row-gap: 120px;
+
+  @media ${device.tablet.mediaQuery} {
+    margin-top: 60px;
+    row-gap: 40px;
+    align-items: center;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    flex-direction: column-reverse;
+    margin-top: 0;
+    row-gap: 32px;
+  }
 `;
 
 const CrewPic = styled.div`
@@ -30,27 +56,43 @@ const CrewPic = styled.div`
   position: absolute;
   bottom: 0;
   right: 165px;
-`;
+  z-index: -1;
 
-const DotsWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  column-gap: 24px;
-`
+  @media ${device.tablet.mediaQuery} {
+    position: relative;
+    width: 100%;
+    right: 0;
+    height: 512px;
 
-const Dot = styled.div<{ active: boolean }>`
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
-  background-color: rgba(var(--white), ${({ active }) => active ? "1" : ".17"});
-  cursor: pointer;
-
-  ${({ active }) => !active && css`
-    &:hover {
-      background-color: rgba(var(--white), .5);
+    img {
+      position: absolute;
+      max-width: 100%;
+      height: 512px;
+      margin: 0 auto;
+      right: 0;
+      left: 0;
+      bottom: 0;
     }
-  `}
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    height: 250px;
+
+    img {
+      position: static;
+      height: 250px;
+    }
+
+    &:after {
+      content: "";
+      position: absolute;
+      height: 1px;
+      background-color: #383b4b;
+      bottom: 0;
+      left: 0;
+      right: 0;
+    }
+  }
 `;
 
 const CrewPage: NextPage = (): JSX.Element => {
@@ -59,27 +101,21 @@ const CrewPage: NextPage = (): JSX.Element => {
 
   const crewHandler = (crewName: string): void => {
     setCrew(crews.find((crew: Crew) => crew.name === crewName));
-  }
-  
+  };
+
   return (
     <Layout title="Crew" description="Space tourism crew page">
       <Wrapper header={{ index: "02", title: "Meet Your Crew" }}>
         {crew && (
-          <>
-            <Content>
-              <Main>
-                <Bio crew={crew} />
-                <DotsWrapper>
-                  {crews.map((item: Crew) =>
-                    <Dot key={item.name} onClick={() => crewHandler(item.name)} active={item.name === crew.name} />
-                  )}
-                </DotsWrapper>
-              </Main>
-              <CrewPic>
-                <img src={filterImage(crew.images.png)} alt={crew.name} />
-              </CrewPic>
-            </Content>
-          </>
+          <Content>
+            <Main>
+              <Bio role={crew.role} name={crew.name} bio={crew.bio} />
+              <Dots crews={crews} crew={crew} handler={crewHandler} />
+            </Main>
+            <CrewPic>
+              <img src={filterImage(crew.images.png)} alt={crew.name} />
+            </CrewPic>
+          </Content>
         )}
       </Wrapper>
     </Layout>

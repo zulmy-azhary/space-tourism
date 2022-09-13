@@ -82,9 +82,17 @@ const GlobalStyles = createGlobalStyle`
       font-size: 80px;
     }
 
+    h3 {
+      font-size: 40px;
+    }
+
+    h4 {
+      font-size: 24px;
+    }
+
     h5 { 
       font-size: 20px;
-      letter-spacing: 3.38px
+      letter-spacing: 3.38px;
     }
 
     p {
@@ -100,6 +108,10 @@ const GlobalStyles = createGlobalStyle`
     
     h2 {
       font-size: 56px;
+    }
+
+    h3 {
+      font-size: 24px;
     }
 
     h4 {

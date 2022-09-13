@@ -8,9 +8,11 @@ import { useContext } from "react";
 import HamburgerMenu from "../../assets/icon-hamburger.svg";
 import CloseMenu from "../../assets/icon-close.svg";
 import { MediaContext, ToggleContext } from "../../context";
+import { AnimatePresence } from "framer-motion";
+import { useClickOutside } from "../../hooks/useClickOutside";
 
 const NavContainer = styled.nav`
-  position: absolute;
+  position: fixed;
   margin-top: 40px;
   width: 100%;
   min-width: 100%;
@@ -25,7 +27,7 @@ const NavContainer = styled.nav`
     content: "";
     position: absolute;
     height: 1px;
-    width: 473px;
+    width: 33%;
     background-color: rgba(var(--white), 0.25);
     mix-blend-mode: normal;
     left: 170px;
@@ -62,6 +64,23 @@ const NavList = styled.ul`
     padding-right: 50px;
     column-gap: 37px;
   }
+
+  @media ${device.mobile.mediaQuery} {
+    position: fixed;
+    flex-direction: column;
+    right: 0;
+    top: 0;
+    height: 100vh;
+    width: 254px;
+    align-items: flex-start;
+    padding: 118px 0 0 32px;
+    row-gap: 32px;
+
+    li {
+      width: 100%;
+      height: fit-content;
+    }
+  }
 `;
 
 const Logo = styled(LogoBrand)`
@@ -82,47 +101,79 @@ const NavItem = styled.a<{ pathName: string }>`
     position: absolute;
     height: 3px;
     width: 100%;
-    background-color: ${({ href, pathName }) =>
-    href === pathName && "rgb(var(--white))"};
+    background-color: ${({ href, pathName }) => href === pathName && "rgb(var(--white))"};
     bottom: 0;
     left: 0;
     transition: .2s;
   }
+
   ${({ href, pathName }) => href !== pathName && css`
     &:hover:after {
       background-color: rgba(var(--white), 0.5);
     }
   `}
+
+  @media ${device.mobile.mediaQuery} {
+    height: fit-content;
+    width: 100%;
+
+    &:after {
+      width: 4px;
+      height: 31px;
+      right: 0;
+      left: auto;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+  }
 `;
 
 const NavNumber = styled(NavText)`
   font-weight: bold;
+
+  @media ${device.tablet.mediaQuery} {
+    display: none;
+  }
+  
+  @media ${device.mobile.mediaQuery} {
+    display: block;
+  }
+`;
+
+const ActionMenu = styled.div`
+  position: relative;
+  z-index: 9;
 `;
 
 const Navbar = (): JSX.Element => {
   const router = useRouter();
-  const { mobile, tablet } = useContext(MediaContext);
+  const { mobile } = useContext(MediaContext);
   const { toggle, setToggle } = useContext(ToggleContext);
+  const menuRef = useClickOutside(() => setToggle(false));  
 
   return (
     <NavContainer>
       <Logo />
-      {!mobile && <NavList>
-        {data.map((item: Record<string, string>) => (
-          <li key={item.index}>
-            <Link passHref href={item.url}>
-              <NavItem pathName={router.pathname}>
-                {!tablet && <NavNumber>{item.index}</NavNumber>}
-                <NavText>{item.name}</NavText>
-              </NavItem>
-            </Link>
-          </li>
-        ))}
-      </NavList>}
+      <AnimatePresence initial={false} mode="wait">
+        {(!mobile || toggle) && (
+          <NavList ref={menuRef as React.RefObject<HTMLUListElement>}>
+            {data.map((item: Record<string, string>) => (
+              <li key={item.index} onClick={() => setToggle(false)}>
+                <Link passHref href={item.url}>
+                  <NavItem pathName={router.pathname}>
+                    <NavNumber>{item.index}</NavNumber>
+                    <NavText>{item.name}</NavText>
+                  </NavItem>
+                </Link>
+              </li>
+            ))}
+          </NavList>
+        )}
+      </AnimatePresence>
       {mobile &&
-        <div onClick={() => setToggle(prev => !prev)}>
+        <ActionMenu onClick={() => setToggle(prev => !prev)}>
           {toggle ? <CloseMenu /> : <HamburgerMenu />}
-        </div>
+        </ActionMenu>
       }
     </NavContainer>
   );

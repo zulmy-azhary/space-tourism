@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { device } from "../../helper";
 
 const Title = styled.div`
   font-family: "Bellefair";
@@ -20,10 +21,20 @@ const SubTitle = styled.div`
 const NavText = styled.div`
   color: rgb(var(--white));
   font-family: "Barlow Condensed";
-  font-size: 1rem; //16px
+  font-size: 16px;
   letter-spacing: 2.7px;
   line-height: auto;
   text-transform: uppercase;
+
+  @media ${device.tablet.mediaQuery} {
+    font-size: 14px;
+    letter-spacing: 2.36px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    font-size: 16px;
+    letter-spacing: 2.36px;
+  }
 `;
 
 export { Title, SubTitle, NavText };

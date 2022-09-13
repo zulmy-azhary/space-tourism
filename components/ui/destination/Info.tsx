@@ -5,7 +5,7 @@ import { SubTitle, Title } from "../../styles/SharedStyles";
 
 const InfoWrapper = styled.div`
   display: flex;
-  column-gap: 4.938rem;
+  column-gap: 79px;
   position: relative;
   padding-top: 28px;
 
@@ -26,13 +26,14 @@ const InfoWrapper = styled.div`
   @media ${device.mobile.mediaQuery} {
     flex-direction: column;
     row-gap: 32px;
+    padding-top: 32px;
   }
 `;
 
 const Item = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: .75rem;
+  row-gap: 12px;
 `;
 
 interface Props {

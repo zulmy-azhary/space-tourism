@@ -39,12 +39,14 @@ const Content = styled.div`
   align-items: center;
   height: 100%;
   min-height: 100vh;
+  z-index: 1;
 
   @media ${device.tablet.mediaQuery} {
-    padding-top: 96px;
+    padding: 96px 0 0;
+    align-items: stretch;
   }
   @media ${device.mobile.mediaQuery} {
-    padding: 96px 24px 0;
+    padding: 96px 24px 40px;
   }
 `;
 

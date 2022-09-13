@@ -1,5 +1,6 @@
+import { forwardRef } from "react";
 import styled from "styled-components";
-import { mediaState } from "../../helper";
+import { device, mediaState } from "../../../helper";
 
 const Wrapper = styled.div<WrapperStyle>`
   width: ${({ size }) => size};
@@ -34,6 +35,18 @@ const Wrapper = styled.div<WrapperStyle>`
     bottom: -30%;
     left: -30%;
   }
+
+  @media ${device.tablet.mediaQuery} {
+    &:hover:after {
+      scale: .85;
+    }
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    &:hover:after {
+      scale: 1.1;
+    }
+  }
 `;
 
 const Text = styled.h4`
@@ -49,14 +62,14 @@ type Props = WrapperStyle & {
   onClick?: () => void;
 };
 
-const MainCircle = ({ children, onClick }: Props): JSX.Element => {
+const MainCircle = forwardRef<HTMLDivElement, Props>(({ children, onClick }, ref): JSX.Element => {
   const size: string | number = mediaState("150px", "242px", "274px");
 
   return (
-    <Wrapper size={size} onClick={onClick}>
+    <Wrapper size={size} onClick={onClick} ref={ref}>
       <Text>{children}</Text>
     </Wrapper>
   )
-}
+});
 
 export default MainCircle

@@ -5,11 +5,6 @@ import { device } from "../../helper";
 const Container = styled.section`
   width: 100%;
   height: 100%;
-  /* position: relative; */
-
-  @media ${device.mobile.mediaQuery} {
-    margin-bottom: 56px;
-  }
 `;
 
 const Header = styled.div`
@@ -22,6 +17,12 @@ const Header = styled.div`
   @media ${device.tablet.mediaQuery} {
     padding: 0 38.5px;
     margin-top: 40px;
+    column-gap: 16px;
+  }
+
+  @media ${device.mobile.mediaQuery} {
+    margin: 0 auto;
+    justify-content: center;
   }
 `;
 
@@ -43,12 +44,12 @@ interface Props {
   children: React.ReactNode;
 }
 
-const Wrapper = ({ header, children }: Props): JSX.Element => {
+const Wrapper = ({ header: { index, title }, children }: Props): JSX.Element => {
   return (
     <Container>
       <Header>
-        <SubHeading>{header.index}</SubHeading>
-        <Heading>{header.title}</Heading>
+        <SubHeading>{index}</SubHeading>
+        <Heading>{title}</Heading>
       </Header>
       {children}
     </Container>

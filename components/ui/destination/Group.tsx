@@ -15,6 +15,10 @@ const Description = styled.p`
   @media ${device.tablet.mediaQuery} {
     margin: 8px 0 49px;
   }
+
+  @media ${device.mobile.mediaQuery} {
+    margin: 1px 0 32px;
+  }
 `;
 
 interface Props {

@@ -27,7 +27,7 @@ const Text = styled.h4<WrapperStyle>`
 `;
 
 interface WrapperStyle {
-  size?: string;
+  size?: string | number;
   active: boolean;
 }
 
