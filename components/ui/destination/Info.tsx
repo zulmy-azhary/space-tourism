@@ -5,9 +5,9 @@ import { SubTitle, Title } from "../../styles/SharedStyles";
 
 const InfoWrapper = styled.div`
   display: flex;
-  column-gap: 79px;
+  column-gap: 4.938rem;
   position: relative;
-  padding-top: 28px;
+  padding-top: 1.75rem;
 
   &:before {
     position: absolute;
@@ -25,15 +25,15 @@ const InfoWrapper = styled.div`
 
   @media ${device.mobile.mediaQuery} {
     flex-direction: column;
-    row-gap: 32px;
-    padding-top: 32px;
+    row-gap: 2rem;
+    padding-top: 2rem;
   }
 `;
 
 const Item = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 12px;
+  row-gap: .75rem;
 `;
 
 interface Props {

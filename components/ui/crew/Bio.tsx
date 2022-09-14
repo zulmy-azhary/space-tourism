@@ -10,24 +10,24 @@ const BioWrapper = styled.div`
 const Role = styled(motion.h4)`
   color: rgba(var(--white), .542);
   mix-blend-mode: normal;
-  margin-bottom: 15px;
+  margin-bottom: .938rem;
 
   @media ${device.tablet.mediaQuery} {
-    margin-bottom: 8px;
+    margin-bottom: .5rem;
   }
 
   @media ${device.mobile.mediaQuery} {
-    font-size: 16px;
+    font-size: 1rem;
   }
 `;
 
 const Description = styled(motion.p)`
   max-width: 27.75rem;
-  margin-top: 27px;
+  margin-top: 1.688rem;
 
   @media ${device.tablet.mediaQuery} {
     max-width: 100%;
-    margin-top: 16px;
+    margin-top: 1rem;
   }
 `;
 

@@ -12,20 +12,20 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin: 72px 165px 0;
+  margin: 4.5rem 10.313rem 0;
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    margin: 106px 0 48px;
-    row-gap: 156px;
+    margin: 6.625rem 0 3rem;
+    row-gap: 9.75rem;
   }
 
   @media ${device.mobile.mediaQuery} {
     height: 100%;
-    row-gap: 81px;
-    margin-top: 20px;
+    row-gap: 5.063rem;
+    margin-top: 1.25rem;
     margin-bottom: 0;
   }
 `;

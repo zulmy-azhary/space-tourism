@@ -45,7 +45,7 @@ const Wrapper = styled.a<WrapperStyle>`
 
   @media ${device.mobile.mediaQuery} {
     &:hover:after {
-      scale: 1.1;
+      scale: 1;
     }
   }
 `;
@@ -54,11 +54,11 @@ const Text = styled.h4`
   color: rgb(var(--type));
 
   @media ${device.tablet.mediaQuery} {
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   @media ${device.mobile.mediaQuery} {
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 `;
 

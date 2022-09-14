@@ -7,7 +7,7 @@ import { device } from "../../helper";
 import { useContext, useEffect } from "react";
 import { BackgroundContext } from "../../context";
 
-const Container = styled.main`
+const Container = styled.div`
   position: relative;
   overflow: hidden;
   width: 100%;
@@ -33,7 +33,7 @@ const Background = styled.div`
 
 const Content = styled.div`
   position: relative;
-  padding-top: 136px;
+  padding-top: 8.5rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -42,11 +42,11 @@ const Content = styled.div`
   z-index: 1;
 
   @media ${device.tablet.mediaQuery} {
-    padding: 96px 0 0;
+    padding: 6rem 0 0;
     align-items: stretch;
   }
   @media ${device.mobile.mediaQuery} {
-    padding: 96px 24px 40px;
+    padding: 6rem 1.5rem 2.5rem;
   }
 `;
 
@@ -92,9 +92,11 @@ const Layout = ({ title, description, children }: LayoutProps): JSX.Element => {
       >
         <Image src={background} layout="fill" alt="background-image" />
       </Background>
-      <Navbar />
+      <header>
+        <Navbar />
+      </header>
       <Content
-        as={motion.div}
+        as={motion.main}
         variants={contentVariants}
         initial="hidden"
         animate="enter"

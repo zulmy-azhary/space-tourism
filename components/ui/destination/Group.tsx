@@ -10,14 +10,14 @@ const GroupWrapper = styled.div`
 `;
 
 const Description = styled.p`
-  margin: 14px 0 54px;
+  margin: .875rem 0 3.375rem;
 
   @media ${device.tablet.mediaQuery} {
-    margin: 8px 0 49px;
+    margin: .5rem 0 3.063rem;
   }
 
   @media ${device.mobile.mediaQuery} {
-    margin: 1px 0 32px;
+    margin: 1px 0 2rem;
   }
 `;
 

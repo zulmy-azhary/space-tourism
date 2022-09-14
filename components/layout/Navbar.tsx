@@ -13,11 +13,11 @@ import { useClickOutside } from "../../hooks/useClickOutside";
 
 const NavContainer = styled.nav`
   position: fixed;
-  margin-top: 40px;
+  margin-top: 2.5rem;
   width: 100%;
   min-width: 100%;
-  height: 96px;
-  padding-left: 55px;
+  height: 6rem;
+  padding-left: 3.438rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -30,13 +30,13 @@ const NavContainer = styled.nav`
     width: 33%;
     background-color: rgba(var(--white), 0.25);
     mix-blend-mode: normal;
-    left: 170px;
+    left: 10.625rem;
     z-index: 2;
   }
 
   @media ${device.tablet.mediaQuery} {
     margin-top: 0;
-    padding-left: 39px;
+    padding-left: 2.438rem;
 
     &:before {
       display: none;
@@ -51,18 +51,18 @@ const NavContainer = styled.nav`
 const NavList = styled(motion.ul)`
   list-style: none;
   display: flex;
-  column-gap: 48px;
-  padding-left: 120px;
-  padding-right: 165px;
+  column-gap: 3rem;
+  padding-left: 7.5rem;
+  padding-right: 10.313rem;
   height: 100%;
   align-items: center;
   background: rgba(var(--white), 0.04);
-  backdrop-filter: blur(81.55px);
+  backdrop-filter: blur(5.097rem);
 
   @media ${device.tablet.mediaQuery} {
-    padding-left: 50px;
-    padding-right: 50px;
-    column-gap: 37px;
+    padding-left: 3.125rem;
+    padding-right: 3.125rem;
+    column-gap: 2.313rem;
   }
 
   @media ${device.mobile.mediaQuery} {
@@ -71,10 +71,10 @@ const NavList = styled(motion.ul)`
     right: 0;
     top: 0;
     height: 100vh;
-    width: 254px;
+    width: 15.875rem;
     align-items: flex-start;
-    padding: 118px 0 0 32px;
-    row-gap: 32px;
+    padding: 7.375rem 0 0 2rem;
+    row-gap: 2rem;
 
     li {
       width: 100%;
@@ -91,7 +91,7 @@ const Logo = styled(LogoBrand)`
 const NavItem = styled.a<{ pathName: string }>`
   position: relative;
   display: flex;
-  column-gap: 11px;
+  column-gap: .688rem;
   text-decoration: none;
   height: 100%;
   align-items: center;
@@ -119,7 +119,7 @@ const NavItem = styled.a<{ pathName: string }>`
 
     &:after {
       width: 4px;
-      height: 31px;
+      height: 1.938rem;
       right: 0;
       left: auto;
       top: 50%;
@@ -171,7 +171,7 @@ const Navbar = (): JSX.Element => {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: 30 }}
-                transition={{ type: 'tween', duration: .3, delay: idx * 0.15 }}
+                transition={{ type: 'tween', duration: .3, delay: idx * .15 }}
               >
                 <Link passHref href={item.url}>
                   <NavItem pathName={router.pathname}>

@@ -4,16 +4,16 @@ import { device } from "../../../helper";
 const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 24px;
-  width: 450px;
+  row-gap: 1.5rem;
+  width: 28.125rem;
 
   @media ${device.tablet.mediaQuery} {
-    width: 444px;
+    width: 27.75rem;
   }
 
   @media ${device.mobile.mediaQuery} {
     width: 100%;
-    row-gap: 16px;
+    row-gap: 1rem;
   }
 `;
 

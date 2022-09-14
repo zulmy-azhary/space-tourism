@@ -13,19 +13,19 @@ import { Details, Dots } from "../components/ui/technology";
 
 const Content = styled.div`
   display: flex;
-  margin-top: 26px;
+  margin-top: 1.625rem;
   justify-content: space-between;
   align-items: center;
-  margin-left: 165px;
+  margin-left: 10.313rem;
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: column-reverse;
     margin-left: 0;
-    margin-top: 60px;
+    margin-top: 3.75rem;
   }
 
   @media ${device.mobile.mediaQuery} {
-    margin-top: 32px;
+    margin-top: 2rem;
   }
 `;
 
@@ -34,26 +34,26 @@ const Main = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  column-gap: 80px;
-  margin-top: 137px;
+  column-gap: 5rem;
+  margin-top: 8.563rem;
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: column;
-    margin-top: 56px;
-    row-gap: 44px;
-    padding: 0 96px;
+    margin-top: 3.5rem;
+    row-gap: 2.75rem;
+    padding: 0 6rem;
   }
 
   @media ${device.mobile.mediaQuery} {
     width: 100%;
     padding: 0;
-    margin-top: 34px;
+    margin-top: 2.125rem;
   }
 `;
 
 const ImageWrapper = styled(motion.div)`
   @media ${device.mobile.mediaQuery} {
-    margin: 0 -24px;
+    margin: 0 -1.5rem;
   }
 `;
 

@@ -17,19 +17,19 @@ const Content = styled.div`
   column-gap: 9.813rem;
   margin-left: 4.25rem;
   margin-top: 4rem;
-  padding: 0 165px;
+  padding: 0 10.313rem;
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: column;
-    margin: 60px 97px 48px;
+    margin: 3.75rem 6.063rem 3rem;
     padding: 0;
-    row-gap: 53px;
+    row-gap: 3.313rem;
     text-align: center;
   }
 
   @media ${device.mobile.mediaQuery} {
-    margin: 32px 0 0;
-    row-gap: 26px;
+    margin: 2rem 0 0;
+    row-gap: 1.625rem;
   }
 `;
 

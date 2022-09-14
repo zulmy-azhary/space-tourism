@@ -5,20 +5,20 @@ import type { Destination } from "../../../types";
 import { NavText } from "../../styles/SharedStyles";
 
 const List = styled.ul`
-  height: 34px;
+  height: 2.125rem;
   display: flex;
-  column-gap: 36px;
+  column-gap: 2.25rem;
   align-items: center;
-  margin-bottom: 37px;
+  margin-bottom: 2.313rem;
 
   @media ${device.tablet.mediaQuery} {
     justify-content: center;
-    margin-bottom: 32px;
+    margin-bottom: 2rem;
   }
 
   @media ${device.mobile.mediaQuery} {
-    column-gap: 27px;
-    margin-bottom: 20px;
+    column-gap: 1.688rem;
+    margin-bottom: 1.25rem;
   }
 `;
 
@@ -47,12 +47,12 @@ const Item = styled(NavText)<{ selected?: string, name: string }>`
   `};
 
   @media ${device.tablet.mediaQuery} {
-    font-size: 16px;
+    font-size: 1rem;
     letter-spacing: 2.7px;
   }
 
   @media ${device.mobile.mediaQuery} {
-    font-size: 14px;
+    font-size: .875rem;
     letter-spacing: 2.36px;
   }
 `;

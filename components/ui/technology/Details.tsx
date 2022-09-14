@@ -11,25 +11,25 @@ const DetailsWrapper = styled(motion.div)`
 
 const SubText = styled(NavText)`
   color: rgb(var(--sky));
-  margin-bottom: 11px;
+  margin-bottom: .688rem;
 
   @media ${device.tablet.mediaQuery} {
-    margin-bottom: 16px;
+    margin-bottom: 1rem;
   }
 
   @media ${device.mobile.mediaQuery} {
-    font-size: 14px;
-    letter-spacing: 2.36;
-    margin-bottom: 9px;
+    font-size: .875rem;
+    letter-spacing: 2.36px;
+    margin-bottom: .563rem;
   }
 `;
 
 const Description = styled.p`
-  margin-top: 17px;
-  width: 444px;
+  margin-top: 1.063rem;
+  width: 27.75rem;
 
   @media ${device.tablet.mediaQuery} {
-    margin-top: 16px;
+    margin-top: 1rem;
     width: 100%;
   }
 `;

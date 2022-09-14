@@ -6,11 +6,11 @@ import { Circle } from ".";
 const DotsWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  row-gap: 32px;
+  row-gap: 2rem;
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: row;
-    column-gap: 16px;
+    column-gap: 1rem;
   }
 `;
 

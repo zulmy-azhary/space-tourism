@@ -36,26 +36,26 @@ const GlobalStyles = createGlobalStyle`
   }
 
   h1 {
-    font-size: 150px;
+    font-size: 9.375rem;
   }
 
   h2 {
-    font-size: 100px;
+    font-size: 6.25rem;
   }
 
   h3 {
-    font-size: 56px;
+    font-size: 3.5rem;
   }
 
   h4 {
-    font-size: 32px;
+    font-size: 2rem;
     letter-spacing: 2px;
   }
 
   h5 {
     font-family: 'Barlow Condensed';
     color: rgb(var(--sky));
-    font-size: 28px;
+    font-size: 1.75rem;
     letter-spacing: 4.72px; // 4.75 in design system
   }
 
@@ -66,9 +66,9 @@ const GlobalStyles = createGlobalStyle`
   }
   
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
     color: rgb(var(--sky));
-    line-height: 32px;
+    line-height: 2rem;
   }
 
   li {
@@ -79,65 +79,55 @@ const GlobalStyles = createGlobalStyle`
 
   @media ${device.tablet.mediaQuery} {
     h2 {
-      font-size: 80px;
+      font-size: 5rem;
     }
 
     h3 {
-      font-size: 40px;
+      font-size: 2.5rem;
     }
 
     h4 {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
 
     h5 { 
-      font-size: 20px;
+      font-size: 1.25rem;
       letter-spacing: 3.38px;
     }
 
     p {
-      font-size: 16px;
-      line-height: 28px;
+      font-size: 1rem;
+      line-height: 1.75rem;
     }
   }
 
   @media ${device.mobile.mediaQuery} {
     h1 {
-      font-size: 80px;
+      font-size: 5rem;
     }
     
     h2 {
-      font-size: 56px;
+      font-size: 3.5rem;
     }
 
     h3 {
-      font-size: 24px;
+      font-size: 1.5;
     }
 
     h4 {
-      font-size: 20px;
+      font-size: 1.25rem;
       letter-spacing: 1.25px;
     }
 
     h5 {
-      font-size: 16px;
+      font-size: 1rem;
     }
 
     p {
-      font-size: 15px;
-      line-height: 25px;
+      font-size: .938rem;
+      line-height: 1.563rem;
     }
   }
-
-  /* @media (prefers-color-scheme: dark) {
-    html {
-      color-scheme: dark;
-    }
-    body {
-      color: white;
-      background: black;
-    }
-  } */
 `;
 
 export default GlobalStyles;

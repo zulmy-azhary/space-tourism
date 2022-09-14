@@ -13,20 +13,20 @@ const Content = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-left: 165px;
+  padding-left: 10.313rem;
 
   @media ${device.tablet.mediaQuery} {
     flex-direction: column;
     padding-left: 0;
     text-align: center;
-    margin: 0 80px;
-    row-gap: 66px;
+    margin: 0 5rem;
+    row-gap: 4.125rem;
   }
 
   @media ${device.mobile.mediaQuery} {
     flex-direction: column-reverse;
-    margin: 32px 0 0;
-    row-gap: 32px;
+    margin: 2rem 0 0;
+    row-gap: 2rem;
   }
 `;
 
@@ -35,19 +35,19 @@ const Main = styled.div`
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start;
-  margin-top: 154px;
-  row-gap: 120px;
+  margin-top: 9.625rem;
+  row-gap: 7.5rem;
 
   @media ${device.tablet.mediaQuery} {
-    margin-top: 60px;
-    row-gap: 40px;
+    margin-top: 3.75rem;
+    row-gap: 2.5rem;
     align-items: center;
   }
 
   @media ${device.mobile.mediaQuery} {
     flex-direction: column-reverse;
     margin-top: 0;
-    row-gap: 32px;
+    row-gap: 2rem;
   }
 `;
 
@@ -56,19 +56,19 @@ const CrewPic = styled.div`
   user-select: none;
   position: absolute;
   bottom: 0;
-  right: 165px;
+  right: 10.313rem;
   z-index: -1;
 
   @media ${device.tablet.mediaQuery} {
     position: relative;
     width: 100%;
     right: 0;
-    height: 512px;
+    height: 32rem;
 
     img {
       position: absolute;
       max-width: 100%;
-      height: 512px;
+      height: 32rem;
       margin: 0 auto;
       right: 0;
       left: 0;
@@ -77,11 +77,11 @@ const CrewPic = styled.div`
   }
 
   @media ${device.mobile.mediaQuery} {
-    height: 250px;
+    height: 15.625rem;
 
     img {
       position: static;
-      height: 250px;
+      height: 15.625rem;
     }
 
     &:after {

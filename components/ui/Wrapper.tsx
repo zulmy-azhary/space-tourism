@@ -9,15 +9,15 @@ const Container = styled.section`
 
 const Header = styled.div`
   display: flex;
-  column-gap: 28px;
+  column-gap: 1.75rem;
   align-items: center;
-  margin-top: 76px;
-  padding: 0 165px;
+  margin-top: 4.75rem;
+  padding: 0 10.313rem;
 
   @media ${device.tablet.mediaQuery} {
-    padding: 0 38.5px;
-    margin-top: 40px;
-    column-gap: 16px;
+    padding: 0 2.406rem;
+    margin-top: 2.5rem;
+    column-gap: 1rem;
   }
 
   @media ${device.mobile.mediaQuery} {

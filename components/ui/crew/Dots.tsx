@@ -6,16 +6,16 @@ const DotsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  column-gap: 24px;
+  column-gap: 1.5rem;
 
   @media ${device.mobile.mediaQuery} {
-    column-gap: 16px;
+    column-gap: 1rem;
   }
 `;
 
 const Dot = styled.div<{ active: boolean }>`
-  width: 15px;
-  height: 15px;
+  width: .938rem;
+  height: .938rem;
   border-radius: 50%;
   background-color: rgba(var(--white), ${({ active }) => active ? "1" : ".17"});
   cursor: pointer;
@@ -27,8 +27,8 @@ const Dot = styled.div<{ active: boolean }>`
   `}
 
   @media ${device.tablet.mediaQuery} {
-    width: 10px;
-    height: 10px;
+    width: .625rem;
+    height: .625rem;
   }
 `;
 
