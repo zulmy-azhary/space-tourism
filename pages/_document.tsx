@@ -27,7 +27,9 @@ export default class MyDocument extends Document {
   render(): JSX.Element {
     return (
       <Html lang={this.props.locale ?? "en"} dir="ltr">
-        <Head />
+        <Head>
+        <link href="https://fonts.googleapis.com/css2?family=Barlow&family=Barlow+Condensed&family=Bellefair&display=swap" rel="stylesheet" />
+        </Head>
         <body>
           <Main />
           <NextScript />

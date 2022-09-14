@@ -11,21 +11,6 @@ const GlobalStyles = createGlobalStyle`
     --white: 255, 255, 255;
   }
 
-  @font-face {
-    font-family: 'Bellefair';
-    src: url("/fonts/bellefair-regular.ttf") format(".ttf");
-  }
-
-  @font-face {
-    font-family: 'Barlow';
-    src: url("/fonts/barlow-regular.ttf") format(".ttf");
-  }
-
-  @font-face {
-    font-family: 'Barlow Condensed';
-    src: url("/fonts/barlow-condensed-regular.ttf") format(".ttf");
-  }
-
   * {
     padding: 0;
     margin: 0;
