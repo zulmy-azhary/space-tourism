@@ -9,6 +9,9 @@ This is a solution to the [Space tourism website challenge on Frontend Mentor](h
   - [Overview](#overview)
     - [The challenge](#the-challenge)
     - [Screenshot](#screenshot)
+        - [Desktop screen](#desktop-screen)
+        - [Tablet screen](#tablet-screen)
+      - [Mobile screen](#mobile-screen)
     - [Links](#links)
     - [Built with](#built-with)
     - [What I learned](#what-i-learned)
@@ -27,24 +30,17 @@ Users should be able to:
 
 ### Screenshot
 
-This is a screenshot of the website with the desktop screen based on the design (1440px x 900px)
+##### Desktop screen
+This is a screenshot of the website with the desktop screen based on the design (1440px x 900px).
 ![Desktop screen](./screenshot/desktop.png)
 
-<div style="display:flex; justify-content:center; column-gap:3rem">
+##### Tablet screen
+I'm using the device with screen size (768px x 1024px) to develop this tablet screen.
+![Tablet screen](./screenshot/tablet.png)
 
-  <div style="text-align:center;">
-
-  Tablet screen (768px x 1024px)
-  ![Tablet screen](./screenshot/tablet.png)
-  </div>
-
-  <div style="text-align:center;">
-
-  Mobile screen (375px x 667px)
-  ![Mobile screen](./screenshot/mobile.png)
-  </div>
-
-</div>
+#### Mobile screen
+This is example of device with screen size (375px x 667px) i use to develop a mobile devices.
+![Mobile screen](./screenshot/mobile.png)
 
 Even though the above is responsive for several screens, I can't guarantee it can be optimal on all devices, so please contact me if it's messy on your device.
 
