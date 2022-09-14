@@ -20,6 +20,7 @@ const BackgroundProvider = ({ children }: Props): JSX.Element => {
   const [path, setPath] = useState<string>("home");
   const devices: string = mediaState("mobile", "tablet", "desktop") as string;
 
+  // Set background state when layout's title component has changed.
   useEffect(() => {
     setBackground(`/assets/${path}/background-${path}-${devices}.jpg`);
   }, [path, devices]);

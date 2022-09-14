@@ -8,7 +8,7 @@ import { useContext } from "react";
 import HamburgerMenu from "../../assets/icon-hamburger.svg";
 import CloseMenu from "../../assets/icon-close.svg";
 import { MediaContext, ToggleContext } from "../../context";
-import { AnimatePresence } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import { useClickOutside } from "../../hooks/useClickOutside";
 
 const NavContainer = styled.nav`
@@ -48,7 +48,7 @@ const NavContainer = styled.nav`
   }
 `;
 
-const NavList = styled.ul`
+const NavList = styled(motion.ul)`
   list-style: none;
   display: flex;
   column-gap: 48px;
@@ -149,23 +149,37 @@ const Navbar = (): JSX.Element => {
   const router = useRouter();
   const { mobile } = useContext(MediaContext);
   const { toggle, setToggle } = useContext(ToggleContext);
-  const menuRef = useClickOutside(() => setToggle(false));  
+  const menuRef = useClickOutside(toggle, () => setToggle(false));  
 
   return (
     <NavContainer>
       <Logo />
-      <AnimatePresence initial={false} mode="wait">
+      <AnimatePresence initial={false}>
         {(!mobile || toggle) && (
-          <NavList ref={menuRef as React.RefObject<HTMLUListElement>}>
-            {data.map((item: Record<string, string>) => (
-              <li key={item.index} onClick={() => setToggle(false)}>
+          <NavList
+            variants={navVariants}
+            initial="hidden"
+            animate="animate"
+            exit="hidden"
+            transition={{ ease: "easeInOut", duration: .4 }}
+            ref={menuRef as React.RefObject<HTMLUListElement>}
+          >
+            {data.map((item: Record<string, string>, idx: number) => (
+              <motion.li
+                key={item.index}
+                onClick={() => setToggle(false)}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: 30 }}
+                transition={{ type: 'tween', duration: .3, delay: idx * 0.15 }}
+              >
                 <Link passHref href={item.url}>
                   <NavItem pathName={router.pathname}>
                     <NavNumber>{item.index}</NavNumber>
                     <NavText>{item.name}</NavText>
                   </NavItem>
                 </Link>
-              </li>
+              </motion.li>
             ))}
           </NavList>
         )}
@@ -179,6 +193,9 @@ const Navbar = (): JSX.Element => {
   );
 };
 
-
+const navVariants = {
+  hidden: { x: "50%", opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+}
 
 export default Navbar;

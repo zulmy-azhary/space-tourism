@@ -68,11 +68,17 @@ const DestinationPage: NextPage = (): JSX.Element => {
                 key={destination.images.png}
                 variants={imageVariants}
                 initial="initial"
-                animate="in"
-                exit="out"
+                animate="animate"
+                exit="exit"
                 transition={{ type: "linear", duration: .7 }}
               >
-                <Image width={size} height={size} src={filterImage(destination.images.png)} priority alt={destination.name} />
+                <Image
+                  width={size}
+                  height={size}
+                  src={filterImage(destination.images.png)}
+                  priority
+                  alt={destination.name}
+                />
               </ImageWrapper>
               <Group
                 key={destination.name}
@@ -91,8 +97,8 @@ const DestinationPage: NextPage = (): JSX.Element => {
 
 const imageVariants = {
   initial: { scale: .4, x: 350, opacity: 0 },
-  in: { scale: 1, x: 0, opacity: 1 },
-  out: { scale: .4, x: -350, opacity: 0 },
+  animate: { scale: 1, x: 0, opacity: 1 },
+  exit: { scale: .4, x: -350, opacity: 0 },
 };
 
 export default DestinationPage;

@@ -1,12 +1,13 @@
 import { Layout } from "../components/layout";
 import type { NextPage } from "next";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import data from "../json/data.json";
 import type { Crew } from "../types";
 import { useState } from "react";
 import Wrapper from "../components/ui/Wrapper";
 import { Bio, Dots } from "../components/ui/crew";
 import { device, filterImage } from "../helper";
+import { AnimatePresence, motion } from "framer-motion";
 
 const Content = styled.div`
   display: flex;
@@ -106,20 +107,35 @@ const CrewPage: NextPage = (): JSX.Element => {
   return (
     <Layout title="Crew" description="Space tourism crew page">
       <Wrapper header={{ index: "02", title: "Meet Your Crew" }}>
-        {crew && (
-          <Content>
-            <Main>
-              <Bio role={crew.role} name={crew.name} bio={crew.bio} />
-              <Dots crews={crews} crew={crew} handler={crewHandler} />
-            </Main>
-            <CrewPic>
-              <img src={filterImage(crew.images.png)} alt={crew.name} />
-            </CrewPic>
-          </Content>
-        )}
+        <AnimatePresence mode="wait" initial={false}>
+          {crew && (
+            <Content key={crew.name}>
+              <Main>
+                <Bio role={crew.role} name={crew.name} bio={crew.bio} />
+                <Dots crews={crews} crew={crew} handler={crewHandler} />
+              </Main>
+              <CrewPic
+                as={motion.div}
+                variants={imageVariants}
+                initial="hidden"
+                animate="animate"
+                exit="exit"
+                transition={{ ease: "linear", duration: .4 }}
+              >
+                <img src={filterImage(crew.images.png)} alt={crew.name} />
+              </CrewPic>
+            </Content>
+          )}
+        </AnimatePresence>
       </Wrapper>
     </Layout>
   );
 };
+
+const imageVariants = {
+  hidden: { x: -50, opacity: 0 },
+  animate: { x: 0, opacity: 1 },
+  exit: { x: 50, opacity: 0 },
+}
 
 export default CrewPage;
