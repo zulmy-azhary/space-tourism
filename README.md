@@ -46,7 +46,7 @@ Even though the above is responsive for several screens, I can't guarantee it ca
 
 ### Links
 
-- Solution URL: [Frontend Mentor Solution](https://your-solution-url.com)
+- Solution URL: [Frontend Mentor Solution](https://www.frontendmentor.io/solutions/space-tourism-nextjs-typescript-styledcomponents-framermotion-D-Qt0HmGAM)
 - Live Site URL: [Zoel Space Tourism](https://zoel-space-tourism.vercel.app/)
 
 ### Built with
